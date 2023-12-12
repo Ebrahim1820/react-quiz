@@ -1,9 +1,12 @@
-function NextQuestion({ dispatch, answer, index, maxNumOfQuestions }) {
+import { useQuiz } from "../Contexts/QuizContext";
+
+function NextQuestion() {
+  const { dispatch, answer, index, numOfQuestions } = useQuiz();
   // if the answer is empty will not display button
   if (answer === null) return;
 
   // check if is not the last question
-  if (index < maxNumOfQuestions - 1)
+  if (index < numOfQuestions - 1)
     // only run if there is an answer
     return (
       <div>
@@ -15,7 +18,7 @@ function NextQuestion({ dispatch, answer, index, maxNumOfQuestions }) {
         </button>
       </div>
     );
-  if (index === maxNumOfQuestions - 1)
+  if (index === numOfQuestions - 1)
     // only run if there is an answer
     return (
       <div>

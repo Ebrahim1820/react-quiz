@@ -1,6 +1,10 @@
 import { useEffect } from "react";
-function FinishScreen({ points, maxNumbOfPoints, highscore, dispatch }) {
-  const percentage = (points / maxNumbOfPoints) * 100;
+import { useQuiz } from "../Contexts/QuizContext";
+
+function FinishScreen() {
+  const { dispatch, points, highscore, maxNumberofPoints } = useQuiz();
+
+  const percentage = (points / maxNumberofPoints) * 100;
 
   let emoji;
   if (percentage === 100) emoji = "🎈";
@@ -19,10 +23,10 @@ function FinishScreen({ points, maxNumbOfPoints, highscore, dispatch }) {
     <>
       <p className="result">
         <span>{emoji}</span>Your scored
-        <strong>{points}</strong> out of {maxNumbOfPoints} (
+        <strong> {points}</strong> out of {maxNumberofPoints} (
         {Math.ceil(percentage)} %)
       </p>
-      <p className="highscore">(Highscore {highscore} points)</p>
+      <p className="highscore">(The Highest Score Is {highscore} Points)</p>
 
       <button
         className="btn btn-ui"
